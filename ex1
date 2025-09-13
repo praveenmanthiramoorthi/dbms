@@ -1,0 +1,35 @@
+-- Create table with constraints
+CREATE TABLE employer (
+    empid INT PRIMARY KEY,
+    ename VARCHAR(50) NOT NULL,
+    job VARCHAR(30),
+    deptno INT UNIQUE,
+    salary DECIMAL(10,2) CHECK (salary > 0)
+);
+
+-- Insert rows
+INSERT INTO employer VALUES (1, 'Arun', 'developer', 2, 30000.00);
+INSERT INTO employer VALUES (2, 'Bala', 'tester', 3, 25000.00);
+INSERT INTO employer VALUES (3, 'Chitra', 'analyst', 4, 40000.00);
+INSERT INTO employer VALUES (4, 'Divya', 'web designer', 5, 28000.00);
+
+-- Show details before output
+SELECT 'Name: Praveen, Reg No: 2117240030106' AS Student_Info;
+
+-- Display all rows
+SELECT * FROM employer;
+
+-- Update salary of one employee
+UPDATE employer SET salary = 35000 WHERE empid = 2;
+
+-- Show details before output
+SELECT 'Name: Praveen, Reg No: 2117240030106' AS Student_Info;
+
+-- Delete one employee
+DELETE FROM employer WHERE empid = 4;
+
+-- Show details before output
+SELECT 'Name: Praveen, Reg No: 2117240030106' AS Student_Info;
+
+-- Show final table
+SELECT * FROM employer;
