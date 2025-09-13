@@ -1,0 +1,55 @@
+-- Drop table if it already exists
+DROP TABLE IF EXISTS employee;
+
+-- Create Employee table
+CREATE TABLE employee (
+    empno INT PRIMARY KEY,
+    ename VARCHAR(50),
+    job VARCHAR(30),
+    deptno INT,
+    salary DECIMAL(10,2)
+);
+
+-- Insert values
+INSERT INTO employee VALUES 
+(101, 'Anitha', 'Developer', 1, 15000),
+(102, 'Kumar', 'Clerk', 2, 10000),
+(103, 'Riwat', 'DB Admin', 2, 24000),
+(104, 'Anjur', 'Manager', 2, 40000),
+(105, 'Vijay', 'TL', 3, 25000);
+
+-- Show details before output
+SELECT 'Name: Praveen, Reg No: 2117240030106' AS Student_Info;
+
+-- 1. Employees whose name starts with 'a'
+SELECT * FROM employee WHERE ename LIKE 'a%';
+
+-- Show details before output
+SELECT 'Name: Praveen, Reg No: 2117240030106' AS Student_Info;
+
+-- 2. Employees whose name does not start with 'a'
+SELECT * FROM employee WHERE ename NOT LIKE 'a%';
+
+-- Show details before output
+SELECT 'Name: Praveen, Reg No: 2117240030106' AS Student_Info;
+
+-- 3. Employees whose salary is between 15000 and 30000
+SELECT * FROM employee WHERE salary BETWEEN 15000 AND 30000;
+
+-- Show details before output
+SELECT 'Name: Praveen, Reg No: 2117240030106' AS Student_Info;
+
+-- 4. Total and average salary
+SELECT SUM(salary) AS Total_Salary, AVG(salary) AS Average_Salary FROM employee;
+
+-- Show details before output
+SELECT 'Name: Praveen, Reg No: 2117240030106' AS Student_Info;
+
+-- 5. Maximum and minimum salary
+SELECT MAX(salary) AS Maximum_Salary, MIN(salary) AS Minimum_Salary FROM employee;
+
+-- Show details before output
+SELECT 'Name: Praveen, Reg No: 2117240030106' AS Student_Info;
+
+-- 6. Count total employees
+SELECT COUNT(*) AS Total_Employees FROM employee;
