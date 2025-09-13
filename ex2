@@ -1,0 +1,37 @@
+-- Create Persons table (Parent table)
+CREATE TABLE Persons (
+    ID INT PRIMARY KEY,
+    LastName VARCHAR(255) NOT NULL,
+    FirstName VARCHAR(255),
+    Age INT
+);
+
+-- Create Orders table with FOREIGN KEY reference
+CREATE TABLE Orders (
+    OrderID INT PRIMARY KEY,
+    OrderNumber INT NOT NULL,
+    ID INT,
+    FOREIGN KEY (ID) REFERENCES Persons(ID)
+);
+
+-- Insert values into Persons table
+INSERT INTO Persons VALUES (1, 'Kumar', 'Arun', 25);
+INSERT INTO Persons VALUES (2, 'Sharma', 'Divya', 30);
+INSERT INTO Persons VALUES (3, 'Rao', 'Praveen', 28);
+
+-- Insert values into Orders table
+INSERT INTO Orders VALUES (101, 5001, 1);
+INSERT INTO Orders VALUES (102, 5002, 2);
+INSERT INTO Orders VALUES (103, 5003, 3);
+
+-- Show details before output
+SELECT 'Name: Praveen, Reg No: 2117240030106' AS Student_Info;
+
+-- Display Persons table
+SELECT * FROM Persons;
+
+-- Show details before output
+SELECT 'Name: Praveen, Reg No: 2117240030106' AS Student_Info;
+
+-- Display Orders table
+SELECT * FROM Orders;
