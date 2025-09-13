@@ -1,0 +1,65 @@
+-- Drop old tables if they exist
+DROP TABLE IF EXISTS emp2;
+DROP TABLE IF EXISTS dept;
+
+-- Create Dept table
+CREATE TABLE dept (
+    dno INT PRIMARY KEY,
+    dname VARCHAR(20),
+    loc VARCHAR(20)
+);
+
+-- Insert values into Dept
+INSERT INTO dept VALUES
+(10, 'inventory', 'hyd'),
+(20, 'finance', 'bglr'),
+(30, 'HR', 'mumbai');
+
+-- Create Emp2 table
+CREATE TABLE emp2 (
+    eno INT PRIMARY KEY,
+    ename VARCHAR(20),
+    job VARCHAR(20),
+    mgr INT,
+    dno INT,
+    FOREIGN KEY (dno) REFERENCES dept(dno)
+);
+
+-- Insert values into Emp2 (all dno must exist in dept)
+INSERT INTO emp2 VALUES
+(111, 'saketh', 'analyst', 444, 10),
+(222, 'sandeep', 'clerk', 333, 20),
+(333, 'jagan', 'manager', 111, 10),
+(444, 'madhu', 'engineer', 222, 30);
+
+-- Show details before output
+SELECT 'Name: Praveen, Reg No: 2117240030106' AS Student_Info;
+
+-- Simple Join (Equi Join)
+SELECT e.eno, e.ename, e.job, d.dname, d.loc
+FROM emp2 e, dept d
+WHERE e.dno = d.dno;
+
+-- Show details before output
+SELECT 'Name: Praveen, Reg No: 2117240030106' AS Student_Info;
+
+-- Join using USING clause
+SELECT e.eno, e.ename, e.job, d.dname, d.loc
+FROM emp2 e
+JOIN dept d USING(dno);
+
+-- Show details before output
+SELECT 'Name: Praveen, Reg No: 2117240030106' AS Student_Info;
+
+-- Join using ON clause
+SELECT e.eno, e.ename, e.job, d.dname, d.loc
+FROM emp2 e
+JOIN dept d ON (e.dno = d.dno);
+
+-- Show details before output
+SELECT 'Name: Praveen, Reg No: 2117240030106' AS Student_Info;
+
+-- Non-Equi Join Example
+SELECT e.eno, e.ename, e.job, d.dname, d.loc
+FROM emp2 e, dept d
+WHERE e.dno > d.dno;
